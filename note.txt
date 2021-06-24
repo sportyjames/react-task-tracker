@@ -1,0 +1,175 @@
+1. Why using React
+
+- give you a way to structure the view layer of the application
+    - React is basically the view in MVC
+- reusable components with their own state 
+- JSX 
+    - dynamic html 
+- interactive UI
+    - because it uses sth called virtual dom
+        - it allows you to update parts of the page that need to be updated without reloading it 
+            - e.g. a list of user, delete one of them, it does not have to reload the page, it does everything behind the scene
+
+
+2. Prerequisite:
+- javascript 
+- async 
+- array methods like forEach() & map()
+- fetch API & making HTTP requests
+
+3. UI components
+- when using react, think of your UI as bunch of separate components
+
+4. Components: Function vs. Classes
+- Functions with hooks(more common way to do things)
+    - will be focused on 
+- Classes
+    - old way of doing
+- components render/return JSX 
+- components can also take in props
+
+5. Working with state 
+- Components are dynamic and have state which is an object that determines how a component renders and behaves 
+- e.g. collapse menu have a state open : 'true' || 'false'
+- app state vs. global state
+
+6. React Hooks 
+- functions that let us hook into the React state and lifecycle features from function components 
+- useState: return a stateful value and a function to update it 
+- useEffect: perform side effects in function components 
+    - biggest use: make http request on the page load
+
+7. get started Learning
+- index.html: simple page application that is being loaded 
+
+8. App component & JSX
+- when returning JSX here, you can only return a single parent element
+    - all the component must go inside of it 
+-  if do not want div around the heading, 
+    - <> </>
+- above the return, can define variables, functions
+
+9. create own components 
+- create components folder
+- create ES7 React snippet 
+- import header.js in app.js
+
+10. Component props 
+- pass prop from app.js to Header.js
+- Header.defaultProps for defaultprop 
+- can destruct the prop when it is passed in 
+    - { property names } 
+
+11. Styling 
+- different way to do it 
+    1. create stylesheet
+    2. use the style component which is an external package 
+    3. direct inline style 
+    4. create a style variable 
+
+12. Events(important)
+- create button onClick
+- since button is a component, not always gonna have the same click, so we have Onclick as a prop
+- the console.log('click') will be passing as a prop and caught in button.js 
+
+13. tasks component 
+- create a list with .map()
+- each child need a unique key
+- we don't want the tasks separated from our components
+    - so we use useState to make a part of our state
+
+14. State & useState 
+- import useState which is a hook
+- above return, we create [tasks,setTasks]
+- setTasks will be used to update tasks state 
+- we will set them to useState()
+- tasks are now part of the component state
+- state is immutable
+    - to add more state, use setTasks 
+
+15. Global state
+- we don't really want to have our tasks in the tasks.js
+component because this means tasks can only be used in tasks.js or sending the tasks up, which is really messy
+- we gonna put it into app.js as the global state, then tasks can be pass down into components as props 
+- now we have state at the top level so the state can be used in other components
+
+16. individual task component
+
+17. react-icons
+- npm i react-icons
+
+18. Delete events setup
+- when we click the icon, it delete the events 
+- how do we do that when we do not have access to the event(stored in app.js)
+    - if not using redux, we create a function at app.js and send it down as props so it can fire off at the task component
+    - onDelete is passed from app.js to tasks.js first
+    - onDelete is then passed from tasks.js to task.js
+    - on task.js, we set it as onclick = {onDelete}
+    - onDelete is will be triggered in app.js 
+- state got passed down while action got passed up
+- we have the event object on the console because it is being passed by default 
+- if want the id, instead of calling onDelete directly, call function and then call onDelete with task.id parameter
+
+19. Delete events 
+- create setTasks() because that is how we deal with state 
+- take tasks and use the filter function. We only want the tasks that doe not have same id as the parameter id 
+
+20. Optional message if no tasks 
+
+21. Do the toggle reminder
+- be able to double click so it toggle the reminder to the opposite of what it is now 
+- use setTasks
+- when double click, if event is true, have that border
+- the task is coming down from the state 
+- if using backend, using fetch request or http request to the server 
+
+22. Create add Task form component
+- create and form and embed it to app.js
+- each input has its own component level state
+- default reminder is false 
+
+23. Submit the task 
+- create a AddTask function in app.js because we gonna deal with tasks 
+- pass the AddTask function down as onAdd prop
+- not calling onAdd directly on AddTask 
+    - need to create a onSubmit to the form
+
+24. ShowAddTask state 
+- create the showaddtask state in app.js
+    - add Task form will be dependent on ShowAddTask state 
+- since the function is defiend in app.js, need to pass it down as prop
+
+25. Build for production 
+- npm run build 
+- the build is what you would deploy 
+- sudo npm i -g serve 
+- serve -s build -p 8000
+
+26. JSON server
+- npm i json-server 
+- create a script in package.json
+    - "server: "json-server --watch db.json --port 5000"
+- npm run server
+
+27. fetch data from db.json  
+- in order to load on page load, use a hook called useEffect
+    - it is used to deal with side effect 
+- use it right below useState
+- it takes in an arrow function 
+- we gonna use fetch api with async await 
+- also add a dependency array in useEffect
+
+28. delete task from server 
+- just need a simple delete request 
+
+29. add task from server 
+- just need a simple add request 
+
+30. update toggle reminder on the server 
+
+31. this is a full-stack app
+- you can replace json server by your own restful api 
+
+32. Routing 
+- npm i react-router-dom 
+- 
