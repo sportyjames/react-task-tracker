@@ -172,4 +172,7 @@ component because this means tasks can only be used in tasks.js or sending the t
 
 32. Routing 
 - npm i react-router-dom 
-- 
+
+33. Extra feature: user can only type 1 letter per x second
+
+34. Extra feature: form validation 
